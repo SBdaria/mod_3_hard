@@ -3,17 +3,11 @@ def calculate_structure_sum(*list_):
     data = list(list_)
     while data:
         first = data[0]
-        if isinstance(first, list):
-            sum_ += calculate_structure_sum(*first)
-            data.pop(0)
-        elif isinstance(first, dict):
+        if isinstance(first, dict):
             for key, value in first.items():
                 sum_ += len(key) + value
             data.pop(0)
-        elif isinstance(first, tuple):
-            sum_ += calculate_structure_sum(*list(first))
-            data.pop(0)
-        elif isinstance(first, set):
+        elif isinstance(first, list) or isinstance(first, tuple) or isinstance(first, set):
             sum_ += calculate_structure_sum(*list(first))
             data.pop(0)
         elif isinstance(first, int) or isinstance(first, float):
