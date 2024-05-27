@@ -1,4 +1,4 @@
-def calculate_structure_sum(*list_):
+def calculate_structure_sum(list_):
     sum_ = 0
     data = list(list_)
     while data:
@@ -8,7 +8,7 @@ def calculate_structure_sum(*list_):
                 sum_ += len(key) + value
             data.pop(0)
         elif isinstance(first, list) or isinstance(first, tuple) or isinstance(first, set):
-            sum_ += calculate_structure_sum(*list(first))
+            sum_ += calculate_structure_sum(list(first))
             data.pop(0)
         elif isinstance(first, int) or isinstance(first, float):
             sum_ += first
@@ -26,4 +26,4 @@ data_structure = [
     ((), [{(2, 'Urban', ('Urban2', 35))}])
 ]
 
-print(calculate_structure_sum(*data_structure))
+print(calculate_structure_sum(data_structure))
